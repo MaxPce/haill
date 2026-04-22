@@ -1,59 +1,47 @@
 import React, { useEffect, useState } from "react";
-import {
-  Alert,
-  Box,
-  CircularProgress,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Alert, Box, CircularProgress, Stack, Typography } from "@mui/material";
 import {
   buildResultadosFaseEndpoint,
   extractFaseFromReport,
   getPhaseTypeProps,
 } from "../categorias.utils";
-import FaseMejorDe3 from "./FaseMejorDe3";
+import FaseMejorDe3    from "./FaseMejorDe3";
 import FaseEliminacion from "./FaseEliminacion";
-import FaseGrupo from "./FaseGrupo";
+import FaseGrupo       from "./FaseGrupo";
 
-const FaseDetalle = ({ eventCategoryId, phaseId }) => {
-  const [fase, setFase] = useState(null);
+const FaseDetalle = ({ eventCategoryId, phaseId, vista = "llaves" }) => {
+  const [fase, setFase]       = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [error, setError]     = useState("");
 
   useEffect(() => {
     let isMounted = true;
+    setLoading(true);
+    setError("");
+    setFase(null);
 
     const load = async () => {
-      setLoading(true);
-      setError("");
-
       try {
-        const res = await fetch(
-          buildResultadosFaseEndpoint(eventCategoryId, phaseId)
-        );
-        if (!res.ok)
-          throw new Error(`Error ${res.status}: no se pudieron cargar los resultados`);
-
+        const res = await fetch(buildResultadosFaseEndpoint(eventCategoryId, phaseId));
+        if (!res.ok) throw new Error(`Error ${res.status}`);
         const data = await res.json();
-        const extracted = extractFaseFromReport(data);
         if (!isMounted) return;
-        setFase(extracted);
+        setFase(extractFaseFromReport(data));
       } catch (err) {
         if (!isMounted) return;
-        setError(err.message || "Error cargando resultados de fase");
+        setError(err.message || "Error cargando resultados");
       } finally {
         if (isMounted) setLoading(false);
       }
     };
 
     load();
-
     return () => { isMounted = false; };
   }, [eventCategoryId, phaseId]);
 
   if (loading) {
     return (
-      <Box sx={{ display: "flex", justifyContent: "center", p: 3 }}>
+      <Box sx={{ display: "flex", justifyContent: "center", p: 4 }}>
         <Stack spacing={1} alignItems="center">
           <CircularProgress size={28} />
           <Typography variant="caption" color="text.secondary">
@@ -64,41 +52,20 @@ const FaseDetalle = ({ eventCategoryId, phaseId }) => {
     );
   }
 
-  if (error) {
-    return (
-      <Alert severity="error" sx={{ m: 2 }}>
-        {error}
-      </Alert>
-    );
-  }
-
-  if (!fase) {
-    return (
-      <Alert severity="info" sx={{ m: 2 }}>
-        No hay datos disponibles para esta fase.
-      </Alert>
-    );
-  }
+  if (error) return <Alert severity="error" sx={{ m: 2 }}>{error}</Alert>;
+  if (!fase)  return <Alert severity="info"  sx={{ m: 2 }}>Sin datos para esta fase.</Alert>;
 
   const phaseType = String(fase.phaseType || "").toLowerCase();
 
-  if (phaseType === "mejor_de_3") {
-    return <FaseMejorDe3 fase={fase} />;
-  }
+  const VISTAS = {
+    mejor_de_3:  <FaseMejorDe3    fase={fase} vista={vista} />,
+    eliminacion: <FaseEliminacion fase={fase} vista={vista} />,
+    grupo:       <FaseGrupo       fase={fase} vista={vista} />,
+  };
 
-  if (phaseType === "eliminacion") {
-    return <FaseEliminacion fase={fase} />;
-  }
-
-  if (phaseType === "grupo") {
-    return <FaseGrupo fase={fase} />;
-  }
-
-  // Fallback para tipos no implementados aún
-  const typeProps = getPhaseTypeProps(fase.phaseType);
-  return (
+  return VISTAS[phaseType] ?? (
     <Alert severity="info" sx={{ m: 2 }}>
-      Vista para tipo <strong>{typeProps.label}</strong> en desarrollo.
+      Vista para tipo <strong>{getPhaseTypeProps(fase.phaseType).label}</strong> en desarrollo.
     </Alert>
   );
 };
