@@ -1,0 +1,59 @@
+.container_deporte_colectivo .css-13xfq8m-MuiTabPanel-root {
+  padding: 6px !important;
+  padding-top: 24px !important;
+}
+
+.container_deporte_colectivo .tab-item2 {
+  display: none;
+}
+
+.tab-item,
+.tab-item2 {
+  transition: all 0.3s ease-in-out;
+}
+
+.container_deporte_colectivo .css-aym9vq-MuiButtonBase-root-MuiTab-root {
+  font-family: "Quicksand", sans-serif;
+}
+
+@media screen and (max-width: 935px) {
+  .container_deporte_colectivo {
+    margin-top: 50px;
+  }
+  .card_gg .box_image {
+    display: none;
+  }
+  .container_deporte_colectivo .sponsor_box {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .container_deporte_colectivo h1 {
+    font-size: 26px;
+  }
+  /* .container_deporte_colectivo h3 {
+    font-size: 16px;
+  } */
+  .container_deporte_colectivo .tab-item {
+    display: none;
+  }
+  .container_deporte_colectivo .tab-item2 {
+    display: block;
+    max-width: 50px !important;
+    flex: 1 1 5%; 
+    text-align: center; 
+  }
+  .container_deporte_colectivo .css-1t4lqmc-MuiButtonBase-root-MuiTab-root {
+    min-width: 65px;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .container_deporte_colectivo h3 {
+    display: block;
+  }
+  .card_gg {
+    max-width: 350px;
+  }
+}

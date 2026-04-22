@@ -1,0 +1,52 @@
+.futbol .posiciones-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2px;
+}
+
+.futbol .posiciones-table th,
+.futbol .posiciones-table td {
+  border: 1px solid #ccc;
+  padding: 4px;
+  text-align: center;
+  vertical-align: middle; /* Alinear verticalmente el contenido */
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.futbol .posiciones-table th {
+  background-color: #8BC34A;
+  color: white;
+}
+
+.futbol .posiciones-table td {
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.futbol .nro {
+  width: 5%;
+}
+
+.futbol .pts {
+  width: 5%; /* Ajustar la columna de puntos */
+}
+
+.futbol .posiciones-table th:nth-child(3),
+.futbol .posiciones-table td:nth-child(3) {
+  width: 4%; /* Ajuste para la columna PTS */
+}
+
+.futbol .posiciones-table th:nth-child(n + 4),
+.futbol .posiciones-table td:nth-child(n + 4) {
+  width: 4%; /* Ajuste para las demás columnas */
+}
+
+.futbol .pts-resaltado {
+  background-color: #8BC34A; /* Color de fondo naranja */
+  color: white; /* Texto en blanco */
+  font-weight: bold; /* Texto en negrita */
+  font-size: 13.5px; /* Tamaño del texto */
+  line-height: 1;
+  padding: 4px;
+}

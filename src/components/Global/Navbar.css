@@ -1,0 +1,67 @@
+/* Navbar.css */
+.nav-transition {
+  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.nav-hidden {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.nav-visible {
+  max-height: 500px; /* Ajustar según el contenido */
+  opacity: 100;
+}
+
+.bg-white {
+  background-color: #ffffff;
+}
+
+.z-50 {
+  z-index: 50;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.lg\:p-0 {
+  padding: 0;
+}
+
+.block {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.opacity-0 {
+  opacity: 0;
+}
+
+.opacity-100 {
+  opacity: 100;
+}
+
+.transition-all {
+  transition: all 0.5s ease-in-out;
+}
+
+.duration-500 {
+  transition-duration: 0.5s;
+}
+
+.ease-in-out {
+  transition-timing-function: ease-in-out;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.w-full {
+  width: 100%;
+}

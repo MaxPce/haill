@@ -1,0 +1,100 @@
+.container_programacion {
+  max-width: 1200px;
+  margin: auto; /* Centrar el contenedor */
+  padding: 16px; /* Añadir algo de espacio alrededor */
+}
+
+.container_programacion .tab_selected {
+  background-color: #2564eb; /* Color oscuro para el tab seleccionado */
+  color: white;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.container_programacion .tab_unselected {
+  background-color: transparent; /* Sin fondo para tabs no seleccionados */
+  color: #1e293b; /* Color de texto oscuro para tabs no seleccionados */
+  border-radius: 0.5rem;
+  background-color: #e5e7eb;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container_programacion .tab_unselected:hover {
+  background-color: #d1d5db;
+}
+
+.container_programacion .fechas_button {
+  background-color: #2564eb; /* Fondo claro para los botones de fechas */
+  color: #1e293b; /* Color de texto oscuro */
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+  border: none; /* Sin borde */
+  background-color: #e5e7eb;
+}
+
+.container_programacion .fechas_button.selected_date {
+  background-color: #2564eb;
+  color: white; /* Texto blanco para el botón seleccionado */
+}
+
+.container_programacion .fechas_button.unselected_date:hover {
+  background-color: #d1d5db; /* Fondo claro al pasar el mouse */
+}
+
+.container_programacion .card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.container_programacion .card:hover {
+  transform: translateY(-5px); /* Menos desplazamiento */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Sombra más suave */
+}
+
+.container_programacion .team_icon .img_logo {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.container_programacion .title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1e293b; /* Color oscuro */
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .container_programacion .cards_container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .container_programacion .cards_container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .container_programacion .cards_container {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 columna */
+    gap: 1rem;
+  }
+  .container_programacion .tag_fecha {
+    display: none;
+  }
+}

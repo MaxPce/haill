@@ -1,0 +1,52 @@
+.basquet .posiciones-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2px;
+}
+
+.basquet .posiciones-table th,
+.basquet .posiciones-table td {
+  border: 1px solid #ccc;
+  padding: 4px;
+  text-align: center;
+  vertical-align: middle; /* Alinear verticalmente el contenido */
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.basquet .posiciones-table th {
+  background-color: #ff6600;
+  color: white;
+}
+
+.basquet .posiciones-table td {
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.basquet .nro {
+  width: 5%;
+}
+
+.basquet .pts {
+  width: 5%; /* Ajustar la columna de puntos */
+}
+
+.basquet .posiciones-table th:nth-child(3),
+.basquet .posiciones-table td:nth-child(3) {
+  width: 4%; /* Ajuste para la columna PTS */
+}
+
+.basquet .posiciones-table th:nth-child(n + 4),
+.basquet .posiciones-table td:nth-child(n + 4) {
+  width: 4%; /* Ajuste para las demás columnas */
+}
+
+.basquet .pts-resaltado {
+  background-color: #ff6600; /* Color de fondo naranja */
+  color: white; /* Texto en blanco */
+  font-weight: bold; /* Texto en negrita */
+  font-size: 13.5px; /* Tamaño del texto */
+  line-height: 1;
+  padding: 4px;
+}

@@ -1,0 +1,122 @@
+/* Estilos para el contenedor principal */
+.voleibol {
+  width: 100%;
+  margin: 10px auto;
+  padding: 0;
+}
+
+/* Encabezado */
+.voleibol .header {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.voleibol .header .title {
+  background-color: #ffc107;
+  padding: 5px 0;
+}
+
+.voleibol .header .title h1 {
+  color: white;
+  font-size: 24px;
+  margin: 0;
+  font-weight: bold;
+}
+
+.voleibol .header .subtitle h2 {
+  color: black;
+  font-size: 16px;
+  margin: 5px 0 0 0;
+  font-weight: bold;
+}
+
+/* Estilos de las tablas */
+.voleibol .voleibol-card {
+  margin-top: 10px;
+}
+
+.voleibol .voleibol-table-container {
+  width: 100%;
+  margin: 0;
+  padding-top: 4px;
+}
+
+.voleibol .volleyball-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2px;
+}
+
+/* Reduciendo el padding y la altura de las celdas */
+.voleibol .volleyball-table th,
+.voleibol .volleyball-table td {
+  border: 1px solid #ccc;
+  padding: 2px; /* Reducido para hacer más compacto */
+  height: 20px; /* Reducido para que las celdas sean más compactas */
+  text-align: center;
+  font-size: 8px; /* Tamaño de fuente reducido */
+  font-weight: bold;
+}
+
+.voleibol .volleyball-table th {
+  background-color: #ffc107;
+  color: white;
+  font-weight: bold;
+  padding: 2px; /* Reducido el padding para las cabeceras */
+}
+
+.voleibol .volleyball-table .resaltado {
+  background-color: #ffc107;
+  color: white;
+  font-size: 10px; /* Reducido para hacer más compacto */
+  padding: 2px;
+}
+
+.voleibol .volleyball-table .pts {
+  font-size: 12px !important; /* Reducido para ajustarse mejor al espacio */
+}
+
+.voleibol .volleyball-table .nro {
+  font-weight: bold;
+  font-size: 8px; /* Reducido para hacer más compacto */
+}
+
+.voleibol .volleyball-table .name_group {
+  font-size: 16px; /* Reducido ligeramente */
+}
+
+/* Alineación y formato general */
+.voleibol .volleyball-table-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Separador entre grupos */
+.voleibol .separador {
+  border-top: 2px solid #000;
+  margin: 6px 0;
+}
+
+/* Estilo para la fecha */
+.voleibol .fecha-container p {
+  margin: 0;
+  padding: 4px 0;
+  font-weight: bold;
+  text-align: center;
+}
+
+.voleibol .fecha-header {
+  background-color: #ffc107;
+  color: white;
+  padding: 2px;
+  font-weight: bold;
+  font-size: 10px; /* Reducido */
+}
+
+/* Estilo para la página al imprimir */
+@page {
+  margin: 5mm 0mm; /* Reducido para que entre más contenido en una página A4 */
+  size: A4 portrait;
+}

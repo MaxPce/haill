@@ -1,0 +1,15 @@
+.card-event::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid transparent;
+  border-radius: inherit;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.card-event:hover::before {
+  border-color: #3b82f6; /* Azul sutil */
+}

@@ -1,0 +1,133 @@
+.fixture .fixture-card {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.fixture .card {
+  background-color: #fff;
+  border-radius: 12px; /* Bordes más redondeados */
+  border: 1px solid #e0e0e0; /* Borde suave alrededor de la tarjeta */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Sombra más suave */
+  padding: 24px; /* Aumentar padding para dar espacio interno */
+  width: 260px; /* Ancho un poco mayor para más espacio */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  margin-bottom: 20px; /* Espacio entre las tarjetas */
+}
+
+.fixture .card:hover {
+  transform: translateY(-5px); /* Hover sutil */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Sombra al hacer hover */
+}
+
+/* Contenedor para los partidos */
+.fixture .match {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px; /* Espacio entre los partidos */
+  height: 100px; /* Altura fija más pequeña */
+  border-bottom: 1px solid #e0e0e0; /* Línea suave y moderna para separar los partidos */
+  padding-bottom: 8px; /* Padding inferior para dar espacio antes de la línea */
+}
+
+/* Contenedor para cada equipo */
+.fixture .team-container {
+  width: 100px; /* Ancho fijo */
+  height: 100%; /* Altura completa del contenedor del partido */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Centrar verticalmente */
+  text-align: center;
+  gap: 4px; /* Espacio entre imagen y texto */
+}
+
+/* Contenido del equipo */
+.fixture .team-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Centrar los elementos */
+}
+
+/* Contenedor para el "vs" */
+.fixture .vs-container {
+  width: 60px; /* Ancho fijo */
+  height: 100%; /* Altura completa del contenedor del partido */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centrar el "vs" */
+  text-align: center;
+}
+
+/* Estilos para la imagen de círculo */
+.fixture .circle-image {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 8px;
+}
+
+/* Estilos para los nombres de los equipos */
+.fixture .team-name {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Estilos para "vs" */
+.fixture .vs {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+/* Estilos para pantallas grandes */
+@media screen and (min-width: 1024px) {
+  .fixture .card {
+    width: calc(50% - 20px); /* Ancho de la tarjeta menos margen */
+    margin-right: 10px; /* Espacio entre las tarjetas */
+  }
+
+  .fixture .card:nth-child(2n) {
+    margin-right: 0; /* Quitar margen a la segunda tarjeta de cada fila */
+  }
+}
+
+/* Estilos para pantallas medianas */
+@media screen and (max-width: 768px) {
+  .fixture .fixture-card {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .fixture .card {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .space-x-4 > :not([hidden]) ~ :not([hidden]) {
+    margin-left: 0 !important;
+  }
+}
+
+/* Estilos para pantallas pequeñas */
+@media screen and (max-width: 480px) {
+  .fixture .circle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .fixture .team-name,
+  .fixture .vs {
+    font-size: 12px;
+  }
+
+  .titulo_grupo {
+    margin-bottom: 2rem;
+  }
+}
+
+.titulo_grupo {
+  margin-bottom: 1.5rem;
+}

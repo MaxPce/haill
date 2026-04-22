@@ -1,0 +1,29 @@
+.px6tl {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+.posiciones_sport .fechas_button {
+  background-color: #2564eb; /* Fondo claro para los botones de fechas */
+  color: #1e293b; /* Color de texto oscuro */
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+  border: none; /* Sin borde */
+  background-color: #e5e7eb;
+}
+.posiciones_sport .fechas_button.selected_date {
+  background-color: #2564eb;
+  color: white; /* Texto blanco para el botón seleccionado */
+}
+
+.posiciones_sport .fechas_button.unselected_date:hover {
+  background-color: #d1d5db; /* Fondo claro al pasar el mouse */
+}
+
+@media screen and (max-width: 600px) {
+  .px6tl {
+    padding-left: 0.35rem;
+    padding-right: 0.35rem;
+  }
+}

@@ -1,0 +1,123 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.contenedor-principal {
+  width: 90%;
+  margin: 10px auto; /* Centrar y añadir un pequeño margen superior */
+  padding: 0;
+}
+
+/* Estilos del encabezado */
+.header {
+  text-align: center;
+  margin-bottom: 10px; /* Separación entre el encabezado y el contenido */
+}
+
+.header .title {
+  background-color: #ff6600;
+  padding: 10px 0;
+}
+
+.header .title h1 {
+  color: white;
+  font-size: 28px;
+  margin: 0;
+  font-weight: bold;
+}
+
+.header .subtitle h2 {
+  color: black;
+  font-size: 18px;
+  margin: 5px 0 0 0;
+  font-weight: bold;
+}
+
+/* Ajustes de tablas y contenido */
+.fecha-container {
+  width: 100%;
+  margin-bottom: 4px;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #fff;
+  text-align: center; /* Centrar contenido */
+}
+
+.fecha-container p {
+  margin: 0;
+  padding: 4px 0;
+  font-weight: bold;
+}
+
+.fecha-header {
+  text-align: center;
+  background-color: #ff6600;
+  color: white;
+  padding: 4px;
+  font-weight: bold;
+  font-size: 12px;
+}
+.resultados-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2px;
+  table-layout: fixed; /* Asegura que todas las celdas tengan el mismo ancho */
+}
+
+.resultados-table td {
+  border: 1px solid #ccc;
+  padding: 4px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.resultados-table .equipo {
+  text-align: left; /* Alinear texto de los equipos a la izquierda */
+  font-size: 10px;
+  font-weight: bold;
+  padding-left: 6px;
+  width: 40%; /* Asegurar que las columnas de equipos ocupen más espacio */
+}
+
+.resultados-table .puntuacion {
+  font-size: 12px;
+  color: #000000 !important;
+  width: 20%; /* Ajustar el ancho de la columna de puntuación */
+}
+
+.resultado-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.resultados-table .vs {
+  margin: 0 10px; /* Asegura espacio entre las puntuaciones y el 'vs' */
+  color: black;
+  font-weight: normal;
+}
+
+.resultados-table .resultado {
+  font-weight: bold;
+  font-size: 16px; /* Aumenta el tamaño de la puntuación */
+}
+
+/* Centrar tablas */
+.resultados-table {
+  margin: 0 auto; /* Centrar tablas */
+}
+
+.resultado-puntos {
+  display: flex;
+  flex-direction: column;
+}
+
+.resultado-puntos-left {
+  margin-right: 10px;
+}
+
+.resultado-puntos-right {
+  margin-left: 10px;
+}

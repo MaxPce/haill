@@ -1,0 +1,36 @@
+.voleibol-card {
+  overflow-x: auto; /* Habilita el scroll horizontal solo para la tabla */
+  -webkit-overflow-scrolling: touch; /* Mejora el desplazamiento en dispositivos táctiles */
+  max-width: 90%; /* Asegura que el contenedor no exceda el 90% del ancho de la pantalla */
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+}
+
+.voleibol-table-container {
+  overflow-x: auto; /* Permite el scroll horizontal en móviles */
+}
+
+.volleyball-table {
+  min-width: 600px; /* Mantiene la tabla ancha para evitar que las columnas se junten demasiado */
+  width: 100%; /* Hace que la tabla ocupe todo el espacio disponible */
+  table-layout: auto;
+}
+
+.volleyball-table th,
+.volleyball-table td {
+  padding: 8px;
+  text-align: center;
+  font-size: 0.85rem;
+  white-space: nowrap; /* Evita que el texto se corte */
+}
+
+@media (max-width: 768px) {
+  .voleibol-card {
+    max-width: 90%; /* Aplica el ancho máximo del 90% solo en móviles */
+  }
+
+  .volleyball-table th,
+  .volleyball-table td {
+    padding: 6px;
+    font-size: 0.75rem; /* Ajusta el tamaño de la fuente en móviles */
+  }
+}
