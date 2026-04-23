@@ -6,25 +6,29 @@ import {
 } from "@mui/material";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import {
-  getAthleteName, getAthleteInstitution, getBracketStatusProps,
+  getAthleteName, getAthleteInstitution, getAthleteInstitutionLogo,
+  getBracketStatusProps,
 } from "../categorias.utils";
+import InstitutionLogo from "../InstitutionLogo";
 
 const ParticipantBox = ({ entry, isWin }) => {
-  const name = getAthleteName(entry?.athlete);
-  const inst = getAthleteInstitution(entry?.athlete);
-  const corner = String(entry?.corner || "").toLowerCase();
+  const name    = getAthleteName(entry?.athlete);
+  const inst    = getAthleteInstitution(entry?.athlete);
+  const logoUrl = getAthleteInstitutionLogo(entry?.athlete);        
+  const corner  = String(entry?.corner || "").toLowerCase();
   const cornerColor = corner === "blue" ? "#1565c0" : "#bdbdbd";
 
   return (
     <Box
-      sx={{
-        flex: 1, p: 2, borderRadius: 2,
-        bgcolor: isWin ? "success.50" : "action.hover",
-        border: "1px solid", borderColor: isWin ? "success.light" : "divider",
-        display: "flex", alignItems: "center", gap: 1.5,
-      }}
-    >
+        sx={{
+            flex: 1, p: 2, borderRadius: 2,
+            bgcolor: isWin ? "success.50" : "action.hover",
+            border: "1px solid", borderColor: isWin ? "success.light" : "divider",
+            display: "flex", alignItems: "center", gap: 1.5,
+        }}
+        >
       <Box sx={{ width: 10, height: 10, borderRadius: "50%", bgcolor: cornerColor, flexShrink: 0 }} />
+      <InstitutionLogo logoUrl={logoUrl} name={inst} size={28} showTooltip={!!inst} />  {/* ← añadir */}
       <Box>
         {isWin && <EmojiEventsIcon sx={{ color: "gold", fontSize: 16, mb: -0.5, mr: 0.5 }} />}
         <Typography variant="body2" fontWeight={isWin ? 700 : 400}>{name}</Typography>
@@ -33,6 +37,7 @@ const ParticipantBox = ({ entry, isWin }) => {
     </Box>
   );
 };
+
 
 // Vista llaves: Serie visual con resultado global + cada ronda
 const VistaLlaves = ({ brackets }) => (
@@ -171,8 +176,18 @@ const VistaResultados = ({ brackets }) => (
                 <TableHead>
                   <TableRow sx={{ bgcolor: "action.selected" }}>
                     <TableCell>Ronda</TableCell>
-                    <TableCell align="center">{p1Name}</TableCell>
-                    <TableCell align="center">{p2Name}</TableCell>
+                    <TableCell align="center">
+                    <Stack direction="row" spacing={0.75} alignItems="center" justifyContent="center">
+                        <InstitutionLogo logoUrl={getAthleteInstitutionLogo(p1Entry?.athlete)} name={getAthleteInstitution(p1Entry?.athlete)} size={16} showTooltip />
+                        <span>{p1Name}</span>
+                    </Stack>
+                    </TableCell>
+                    <TableCell align="center">
+                    <Stack direction="row" spacing={0.75} alignItems="center" justifyContent="center">
+                        <InstitutionLogo logoUrl={getAthleteInstitutionLogo(p2Entry?.athlete)} name={getAthleteInstitution(p2Entry?.athlete)} size={16} showTooltip />
+                        <span>{p2Name}</span>
+                    </Stack>
+                    </TableCell>
                     <TableCell align="center">Ganador</TableCell>
                   </TableRow>
                 </TableHead>

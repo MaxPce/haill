@@ -6,15 +6,18 @@ import {
 } from "@mui/material";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import {
-  getAthleteName, getAthleteInstitution, getBracketStatusProps,
-  getRoundLabel, groupBracketsByRound, getRankMedal,
+  getAthleteName, getAthleteInstitution, getAthleteInstitutionLogo,
+  getBracketStatusProps, getRoundLabel, groupBracketsByRound, getRankMedal,
 } from "../categorias.utils";
+import InstitutionLogo from "../InstitutionLogo";
 
 // ─── Tarjeta de un atleta dentro de la llave ──────────────────────────────────
 const AthleteSlot = ({ entry, score, isWin, corner }) => {
   const name = getAthleteName(entry?.athlete);
   const inst = getAthleteInstitution(entry?.athlete);
+  const logoUrl = getAthleteInstitutionLogo(entry?.athlete);
   const cornerColor = corner === "blue" ? "#1565c0" : corner === "white" ? "#bdbdbd" : "#9e9e9e";
+  
 
   return (
     <Box
@@ -28,17 +31,17 @@ const AthleteSlot = ({ entry, score, isWin, corner }) => {
         gap: 1,
       }}
     >
-      <Stack direction="row" spacing={1} alignItems="center" sx={{ flex: 1, minWidth: 0 }}>
-        <Box sx={{ width: 8, height: 8, borderRadius: "50%", bgcolor: cornerColor, flexShrink: 0 }} />
+      <Stack direction="row" spacing={0.75} alignItems="center" sx={{ minWidth: 0 }}>
+        <InstitutionLogo logoUrl={logoUrl} name={inst} size={20} showTooltip={!!inst} />
         <Box sx={{ minWidth: 0 }}>
-          <Typography variant="body2" fontWeight={isWin ? 700 : 400} noWrap>
+            <Typography variant="body2" fontWeight={isWin ? 700 : 400} noWrap>
             {name}
-          </Typography>
-          <Typography variant="caption" color="text.secondary" noWrap>
+            </Typography>
+            <Typography variant="caption" color="text.secondary" noWrap>
             {inst}
-          </Typography>
+            </Typography>
         </Box>
-      </Stack>
+        </Stack>
       <Typography
         variant="body2"
         fontWeight={700}
@@ -151,9 +154,10 @@ const VistaResultados = ({ brackets, podium }) => {
                     }}
                   >
                     <Typography fontSize={26}>{medal.emoji}</Typography>
+                    <InstitutionLogo logoUrl={getAthleteInstitutionLogo(entry.athlete)} name={inst} size={32} showTooltip={!!inst} />
                     <Box>
-                      <Typography variant="body1" fontWeight={700}>{name}</Typography>
-                      <Typography variant="caption" color="text.secondary">{inst}</Typography>
+                    <Typography variant="body1" fontWeight={700}>{name}</Typography>
+                    <Typography variant="caption" color="text.secondary">{inst}</Typography>
                     </Box>
                   </Box>
                 );
@@ -205,26 +209,46 @@ const VistaResultados = ({ brackets, podium }) => {
                         {bracket.matchNumber}
                       </TableCell>
                       <TableCell>
-                        <Typography variant="body2" fontWeight={winnerRegId === p1RegId ? 700 : 400} color={winnerRegId === p1RegId ? "success.main" : "text.primary"}>
-                          {getAthleteName(p1Entry?.athlete)}
-                        </Typography>
-                        <Typography variant="caption" color="text.secondary" noWrap>
-                          {getAthleteInstitution(p1Entry?.athlete)}
-                        </Typography>
-                      </TableCell>
+                        <Stack direction="row" spacing={0.75} alignItems="center" sx={{ minWidth: 0 }}>
+                            <InstitutionLogo
+                            logoUrl={getAthleteInstitutionLogo(p1Entry?.athlete)}
+                            name={getAthleteInstitution(p1Entry?.athlete)}
+                            size={18}
+                            showTooltip
+                            />
+                            <Box sx={{ minWidth: 0 }}>
+                            <Typography variant="body2" fontWeight={winnerRegId === p1RegId ? 700 : 400} color={winnerRegId === p1RegId ? "success.main" : "text.primary"} noWrap>
+                                {getAthleteName(p1Entry?.athlete)}
+                            </Typography>
+                            <Typography variant="caption" color="text.secondary" noWrap>
+                                {getAthleteInstitution(p1Entry?.athlete)}
+                            </Typography>
+                            </Box>
+                        </Stack>
+                        </TableCell>
                       <TableCell align="center">
                         <Typography variant="body2" fontWeight={700} sx={{ letterSpacing: 1 }}>
                           {s1} – {s2}
                         </Typography>
                       </TableCell>
                       <TableCell>
-                        <Typography variant="body2" fontWeight={winnerRegId === p2RegId ? 700 : 400} color={winnerRegId === p2RegId ? "success.main" : "text.primary"}>
-                          {getAthleteName(p2Entry?.athlete)}
-                        </Typography>
-                        <Typography variant="caption" color="text.secondary" noWrap>
-                          {getAthleteInstitution(p2Entry?.athlete)}
-                        </Typography>
-                      </TableCell>
+                        <Stack direction="row" spacing={0.75} alignItems="center" sx={{ minWidth: 0 }}>
+                            <InstitutionLogo
+                            logoUrl={getAthleteInstitutionLogo(p2Entry?.athlete)}
+                            name={getAthleteInstitution(p2Entry?.athlete)}
+                            size={18}
+                            showTooltip
+                            />
+                            <Box sx={{ minWidth: 0 }}>
+                            <Typography variant="body2" fontWeight={winnerRegId === p1RegId ? 700 : 400} color={winnerRegId === p2RegId ? "success.main" : "text.primary"} noWrap>
+                                {getAthleteName(p2Entry?.athlete)}
+                            </Typography>
+                            <Typography variant="caption" color="text.secondary" noWrap>
+                                {getAthleteInstitution(p2Entry?.athlete)}
+                            </Typography>
+                            </Box>
+                        </Stack>
+                        </TableCell>
                       <TableCell align="center">
                         <Chip label={statusProps.label} color={statusProps.color} size="small" variant="outlined" />
                       </TableCell>

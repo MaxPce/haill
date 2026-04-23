@@ -142,6 +142,12 @@ export const getAthleteInstitution = (athleteEntry) =>
   athleteEntry?.institution?.name ||
   "";
 
+
+export const getAthleteInstitutionLogo = (athleteEntry) =>
+  athleteEntry?.athlete?.institution?.logoUrl ||
+  athleteEntry?.institution?.logoUrl ||
+  null;
+
 export const isWinner = (bracket, registrationId) =>
   bracket?.winner?.registrationId === registrationId;
 
