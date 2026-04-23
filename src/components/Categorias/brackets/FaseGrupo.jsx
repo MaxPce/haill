@@ -148,19 +148,22 @@ const VistaResultados = ({ brackets, podium }) => {
       {/* Combates */}
       {roundGroups.map(([round, roundBrackets]) => (
         <Box key={round}>
-          <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 1.5 }}>
-            <Divider sx={{ flex: 1 }} />
-            <Chip label={getRoundLabel(round)} size="small" color="primary" variant="filled" />
-            <Divider sx={{ flex: 1 }} />
-          </Stack>
+            {/* Solo mostrar el separador de ronda si hay más de un grupo de rondas */}
+            {roundGroups.length > 1 && (
+            <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 1.5 }}>
+                <Divider sx={{ flex: 1 }} />
+                <Chip label={getRoundLabel(round)} size="small" color="primary" variant="filled" />
+                <Divider sx={{ flex: 1 }} />
+            </Stack>
+            )}
           <TableContainer component={Paper} variant="outlined" sx={{ borderRadius: 2 }}>
             <Table size="small" sx={{ tableLayout: "fixed" }}> {/* ← fixed layout */}
                 <colgroup>
                 <col style={{ width: "40px" }} />   {/* # */}
                 <col style={{ width: "35%" }} />    {/* Atleta A */}
-                <col style={{ width: "200px" }} />  {/* Marcador — ancho fijo */}
-                <col style={{ width: "35%" }} />    {/* Atleta B */}
-                <col style={{ width: "80px" }} />  {/* Estado */}
+                <col style={{ width: "310px" }} />  {/* Marcador — ancho fijo */}
+                <col style={{ width: "30%" }} />    {/* Atleta B */}
+                <col style={{ width: "110px" }} />  {/* Estado */}
                 </colgroup>
                 <TableHead>
                 <TableRow sx={{ bgcolor: "action.hover" }}>
@@ -188,7 +191,23 @@ const VistaResultados = ({ brackets, podium }) => {
                         <Typography variant="body2" fontWeight={winnerRegId === p1RegId ? 700 : 400} color={winnerRegId === p1RegId ? "success.main" : "text.primary"}>{getAthleteName(p1Entry?.athlete)}</Typography>
                         <Typography variant="caption" color="text.secondary">{getAthleteInstitution(p1Entry?.athlete)}</Typography>
                       </TableCell>
-                      <TableCell align="center"><Typography variant="body2" fontWeight={700}>{s1} – {s2}</Typography></TableCell>
+                      <TableCell align="center">
+                        <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 0.5 }}>
+                            <Typography
+                            variant="body2" fontWeight={700}
+                            sx={{ width: 28, textAlign: "right", fontVariantNumeric: "tabular-nums" }}
+                            >
+                            {s1}
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary" sx={{ userSelect: "none" }}>–</Typography>
+                            <Typography
+                            variant="body2" fontWeight={700}
+                            sx={{ width: 28, textAlign: "left", fontVariantNumeric: "tabular-nums" }}
+                            >
+                            {s2}
+                            </Typography>
+                        </Box>
+                        </TableCell>
                       <TableCell>
                         <Typography variant="body2" fontWeight={winnerRegId === p2RegId ? 700 : 400} color={winnerRegId === p2RegId ? "success.main" : "text.primary"}>{getAthleteName(p2Entry?.athlete)}</Typography>
                         <Typography variant="caption" color="text.secondary">{getAthleteInstitution(p2Entry?.athlete)}</Typography>

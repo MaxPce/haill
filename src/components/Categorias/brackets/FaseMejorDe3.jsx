@@ -98,16 +98,37 @@ const VistaLlaves = ({ brackets }) => (
                       }}
                     >
                       <Chip label={`R${round.roundNumber}`} size="small" variant="outlined" sx={{ minWidth: 32 }} />
-                      <Typography variant="body2" fontWeight={isP1Win ? 700 : 400} color={isP1Win ? "success.main" : "text.secondary"} sx={{ flex: 1, textAlign: "right" }}>
-                        {s1}
-                      </Typography>
-                      <Typography variant="body2" color="text.disabled">–</Typography>
-                      <Typography variant="body2" fontWeight={isP2Win ? 700 : 400} color={isP2Win ? "success.main" : "text.secondary"} sx={{ flex: 1 }}>
-                        {s2}
-                      </Typography>
-                      <Typography variant="caption" color="text.secondary" sx={{ minWidth: 80, textAlign: "right" }}>
-                        {isP1Win ? getAthleteName(p1) : isP2Win ? getAthleteName(p2) : "—"}
-                      </Typography>
+
+                        {/* Nombre atleta izquierda */}
+                        <Typography variant="caption" color="text.secondary" sx={{ flex: 1, textAlign: "right" }} noWrap>
+                        {getAthleteName(p1)}
+                        </Typography>
+
+                        {/* Scores con ancho fijo — evita que el "–" se desplace */}
+                        <Box sx={{ display: "flex", alignItems: "center", gap: 0.5, flexShrink: 0 }}>
+                        <Typography
+                            variant="body2"
+                            fontWeight={isP1Win ? 700 : 400}
+                            color={isP1Win ? "success.main" : "text.secondary"}
+                            sx={{ width: 28, textAlign: "right", fontVariantNumeric: "tabular-nums" }}
+                        >
+                            {s1}
+                        </Typography>
+                        <Typography variant="body2" color="text.disabled" sx={{ userSelect: "none" }}>–</Typography>
+                        <Typography
+                            variant="body2"
+                            fontWeight={isP2Win ? 700 : 400}
+                            color={isP2Win ? "success.main" : "text.secondary"}
+                            sx={{ width: 28, textAlign: "left", fontVariantNumeric: "tabular-nums" }}
+                        >
+                            {s2}
+                        </Typography>
+                        </Box>
+
+                        {/* Nombre atleta derecha */}
+                        <Typography variant="caption" color="text.secondary" sx={{ flex: 1 }} noWrap>
+                        {getAthleteName(p2)}
+                        </Typography>
                     </Box>
                   );
                 })}

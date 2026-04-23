@@ -176,8 +176,8 @@ const VistaResultados = ({ brackets, podium }) => {
                 <colgroup>
                 <col style={{ width: "40px" }} />   {/* # */}
                 <col style={{ width: "35%" }} />    {/* Atleta A */}
-                <col style={{ width: "200px" }} />  {/* Marcador — ancho fijo */}
-                <col style={{ width: "35%" }} />    {/* Atleta B */}
+                <col style={{ width: "310px" }} />  {/* Marcador — ancho fijo */}
+                <col style={{ width: "30%" }} />    {/* Atleta B */}
                 <col style={{ width: "110px" }} />  {/* Estado */}
                 </colgroup>
                 <TableHead>
